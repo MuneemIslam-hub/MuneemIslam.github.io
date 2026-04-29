@@ -3,81 +3,271 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muneem Islam</title>
+<title>Muneem Islam | Portfolio</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+html {
     scroll-behavior: smooth;
-    background-color: #f9f9f9;
 }
 
-/* NAVBAR */
-nav {
-    position: fixed;
-    width: 100%;
-    background: #0a1f44;
-    padding: 15px 0;
-    top: 0;
-    text-align: center;
-}
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-nav a:hover {
-    color: #ccc;
-}
-
-/* SECTIONS */
-section {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: auto;
-}
-
-/* HERO */
-header {
-    text-align: center;
-    background: #eaeaea;
-    padding-top: 120px;
-    padding-bottom: 40px;
-}
-
-/* HEADSHOT */
-.profile-pic {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #0a1f44;
-    margin-bottom: 15px;
-}
-
-/* TEXT */
-h1 {
-    color: #0a1f44;
-    margin-bottom: 5px;
-}
-h2 {
-    color: #0a1f44;
-    border-bottom: 2px solid #0a1f44;
-    display: inline-block;
-    padding-bottom: 5px;
-}
-p {
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
     line-height: 1.6;
 }
 
-/* FOOTER */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #0a1f44;
+    padding: 16px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+nav .logo {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+nav .links a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav .links a:hover {
+    color: #cfd8e6;
+}
+
+.hero {
+    min-height: 100vh;
+    padding: 140px 8% 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    background: linear-gradient(135deg, #eef3fb, #ffffff);
+}
+
+.hero-text {
+    max-width: 600px;
+    animation: fadeUp 1s ease;
+}
+
+.hero-text h1 {
+    font-size: 54px;
+    color: #0a1f44;
+    margin-bottom: 12px;
+}
+
+.hero-text h3 {
+    font-size: 22px;
+    color: #3d5878;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 17px;
+    margin-bottom: 28px;
+}
+
+.profile-pic {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid #0a1f44;
+    box-shadow: 0 15px 35px rgba(10,31,68,0.25);
+    animation: fadeUp 1.2s ease;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    margin-right: 10px;
+    background: #0a1f44;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn.secondary {
+    background: white;
+    color: #0a1f44;
+    border: 2px solid #0a1f44;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+section {
+    padding: 90px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    color: #0a1f44;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #5d6b7a;
+}
+
+.about {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    border-top: 5px solid #0a1f44;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    color: #0a1f44;
+    margin-bottom: 8px;
+}
+
+.card .date {
+    font-size: 14px;
+    color: #607086;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.card ul {
+    margin-left: 18px;
+}
+
+.card li {
+    margin-bottom: 8px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 35px;
+}
+
+.stat {
+    background: #0a1f44;
+    color: white;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.stat h3 {
+    font-size: 30px;
+}
+
+.contact {
+    text-align: center;
+    background: #0a1f44;
+    color: white;
+}
+
+.contact h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.contact p {
+    margin-bottom: 10px;
+}
+
+.contact a {
+    color: white;
+    font-weight: bold;
+}
+
 footer {
     text-align: center;
     padding: 20px;
-    background: #0a1f44;
+    background: #06152f;
     color: white;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav .links a {
+        margin: 0 7px;
+        font-size: 13px;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 170px;
+    }
+
+    .hero-text h1 {
+        font-size: 40px;
+    }
+
+    .profile-pic {
+        width: 220px;
+        height: 220px;
+    }
 }
 </style>
 </head>
@@ -85,58 +275,143 @@ footer {
 <body>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#experience">Experience</a>
-<a href="#leadership">Leadership</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
+    <div class="logo">Muneem Islam</div>
+    <div class="links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
-<header id="home">
-<img src="ProfilePic.jpg" alt="Muneem Islam Headshot" class="profile-pic">
-<h1>Muneem Islam</h1>
-<p>Accounting Student | Financial Analysis | Aspiring Auditor</p>
+<header class="hero" id="home">
+    <div class="hero-text">
+        <h1>Muneem Islam</h1>
+        <h3>Accounting Student at Rutgers | Financial Analysis | Aspiring Auditor</h3>
+        <p>I am an accounting student focused on audit, financial analysis, budgeting, and data-driven decision-making. Through my Rutgers work experience and leadership roles, I have developed strong attention to detail, communication, and financial review skills.</p>
+        <a href="#experience" class="btn">View Experience</a>
+        <a href="#contact" class="btn secondary">Contact Me</a>
+    </div>
+
+    <img src="ProfilePic.jpg" alt="Muneem Islam Headshot" class="profile-pic">
 </header>
 
 <section id="about">
-<h2>About Me</h2>
-<p>I am an accounting student at Rutgers University with a strong interest in auditing, financial analysis, and consulting. I have hands-on experience with budgeting, financial tracking, and leadership across multiple organizations.</p>
+    <div class="section-title">
+        <h2>About Me</h2>
+        <p>Accounting, finance, leadership, and service.</p>
+    </div>
+
+    <div class="about">
+        <p>
+            I am pursuing a Bachelor of Science in Accounting at Rutgers Business School and am CPA eligible for May 2027. My academic and professional interests include auditing, financial analysis, accounting systems, and consulting. I enjoy working with financial information, improving processes, and helping organizations make better decisions through accurate records and clear reporting.
+        </p>
+
+        <div class="stats">
+            <div class="stat">
+                <h3>40+</h3>
+                <p>Invoices Processed Daily</p>
+            </div>
+            <div class="stat">
+                <h3>$500K+</h3>
+                <p>Budgets Reviewed</p>
+            </div>
+            <div class="stat">
+                <h3>$84K</h3>
+                <p>Grant Project Led</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="experience">
-<h2>Experience</h2>
-<p><b>Accounting Assistant / Bookkeeper – Rutgers University</b><br>
-Processed 40+ invoices daily and maintained accurate financial records. Collaborated with teams to improve reporting accuracy.</p>
+    <div class="section-title">
+        <h2>Experience</h2>
+        <p>Hands-on accounting, finance, and student support experience.</p>
+    </div>
 
-<p><b>Orientation Leader – Rutgers University</b><br>
-Led groups of 15–20 students, facilitated engagement, and supported their transition to university life.</p>
+    <div class="cards">
+        <div class="card">
+            <h3>Accounting Assistant / Bookkeeper</h3>
+            <p class="date">Rutgers University | Aug 2023 – Present</p>
+            <ul>
+                <li>Processed 40+ invoices daily while maintaining accurate financial records.</li>
+                <li>Developed budget requests and travel summaries for 39 organizations.</li>
+                <li>Collaborated with leadership to resolve discrepancies and improve reporting accuracy.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Orientation Leader</h3>
+            <p class="date">Rutgers University | Jun 2025 – Aug 2025</p>
+            <ul>
+                <li>Guided groups of 15–20 incoming students through campus resources.</li>
+                <li>Facilitated small group meetings and student engagement activities.</li>
+                <li>Served as a resource for students and families during university transition.</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 <section id="leadership">
-<h2>Leadership</h2>
-<p><b>RBGA Allocations Committee Member</b><br>
-Managed $500K+ in budgets and reduced processing time by 30%.</p>
+    <div class="section-title">
+        <h2>Leadership</h2>
+        <p>Campus leadership through budgeting, funding, and organization management.</p>
+    </div>
 
-<p><b>Treasurer – Rutgers Art and Design</b><br>
-Managed a $3,000 budget and improved reimbursement efficiency by 75%.</p>
+    <div class="cards">
+        <div class="card">
+            <h3>RBGA Allocations Committee Member</h3>
+            <p class="date">Sep 2023 – Present</p>
+            <ul>
+                <li>Reviewed and approved funding requests for 30+ Business School organizations.</li>
+                <li>Supported oversight of $500K+ in annual student organization budgets.</li>
+                <li>Helped redesign the appeals process, reducing processing time by 30%.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Treasurer, Rutgers Art and Design</h3>
+            <p class="date">Feb 2025 – Present</p>
+            <ul>
+                <li>Managed and tracked a $3,000 club budget for events and operations.</li>
+                <li>Processed 20+ vendor payments for the annual Art Fair.</li>
+                <li>Improved reimbursement and payment turnaround time by 75%.</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 <section id="projects">
-<h2>Projects</h2>
-<p><b>Atlantic County Food Security Grant</b><br>
-Led a team to secure $84,000 in funding to support food delivery initiatives for underserved communities.</p>
+    <div class="section-title">
+        <h2>Projects</h2>
+        <p>Applying financial and leadership skills to community impact.</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Atlantic County Food Security Grant</h3>
+            <p class="date">Project Lead</p>
+            <ul>
+                <li>Led a team of three in successfully applying for an $84,000 grant.</li>
+                <li>Supported funding for food delivery trucks for community organizations.</li>
+                <li>Focused on helping elderly and mobility-limited residents facing food insecurity.</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: muneem.islam.mi@gmail.com</p>
-<p>Phone: 609-418-5406</p>
-<p>LinkedIn: <a href="https://www.linkedin.com/in/muneem-islam" target="_blank">View Profile</a></p>
+<section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:muneem.islam.mi@gmail.com">muneem.islam.mi@gmail.com</a></p>
+    <p>Phone: 609-418-5406</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/muneem-islam" target="_blank">www.linkedin.com/in/muneem-islam</a></p>
 </section>
 
 <footer>
-© 2026 Muneem Islam
+    © 2026 Muneem Islam | Personal Portfolio
 </footer>
 
 </body>
