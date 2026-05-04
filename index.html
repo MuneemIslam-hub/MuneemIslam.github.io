@@ -4,58 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muneem Islam | Portfolio</title>
-
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Arial;background:#f5f7fb;}
-
-nav{
-position:fixed;width:100%;background:#0a1f44;
-padding:15px;text-align:center;
-}
-
-nav a{
-color:white;margin:10px;text-decoration:none;font-weight:bold;
-}
-
-section{
-padding:100px 20px;max-width:900px;margin:auto;
-}
-
-.hero{
-text-align:center;padding-top:120px;
-}
-
-.profile-pic{
-width:200px;border-radius:50%;border:5px solid #0a1f44;
-}
-
-.btn{
-display:inline-block;padding:12px 20px;
-background:#0a1f44;color:white;border-radius:25px;
-margin:5px;text-decoration:none;
-}
-
-.card{
-background:white;padding:20px;border-radius:15px;margin-top:20px;
-}
-
-input{
-width:100%;padding:10px;margin-top:5px;border-radius:8px;border:1px solid #ccc;
-}
-
-button{
-margin-top:15px;padding:12px;width:100%;
-background:#0a1f44;color:white;border:none;border-radius:20px;
-}
-
-.risk{
-padding:15px;border-radius:10px;margin-top:10px;font-weight:bold;text-align:center;
-}
-
-.low{background:#d8f3dc;}
-.moderate{background:#fff3cd;}
-.high{background:#f8d7da;}
+body{font-family:Arial;margin:0;background:#f5f7fb;color:#222}
+nav{background:#0a1f44;padding:15px;text-align:center;position:fixed;width:100%;top:0;z-index:10}
+nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
+section{padding:90px 20px;max-width:900px;margin:auto}
+.hero{text-align:center;padding-top:130px}
+.profile-pic{width:190px;height:190px;object-fit:cover;border-radius:50%;border:5px solid #0a1f44}
+.btn,button{background:#0a1f44;color:white;padding:12px 20px;border:none;border-radius:25px;text-decoration:none;cursor:pointer;font-weight:bold}
+.card{background:white;padding:25px;border-radius:15px;box-shadow:0 6px 18px rgba(0,0,0,.1);margin-top:20px}
+input{width:100%;padding:12px;margin:8px 0 15px;border:1px solid #ccc;border-radius:8px}
+.result{margin-top:20px;padding:15px;border-radius:10px;background:#eef3fb}
+.low{background:#d8f3dc}
+.medium{background:#fff3cd}
+.high{background:#f8d7da}
 </style>
 </head>
 
@@ -70,7 +32,7 @@ padding:15px;border-radius:10px;margin-top:10px;font-weight:bold;text-align:cent
 </nav>
 
 <section class="hero" id="home">
-<img src="ProfilePic.jpg" class="profile-pic">
+<img src="ProfilePic.jpg" class="profile-pic" alt="Muneem Islam Headshot">
 <h1>Muneem Islam</h1>
 <p>Accounting Student | Financial Analysis | Aspiring Auditor</p>
 <a href="#app" class="btn">Open Budget App</a>
@@ -78,66 +40,90 @@ padding:15px;border-radius:10px;margin-top:10px;font-weight:bold;text-align:cent
 
 <section id="about">
 <h2>About Me</h2>
-<p>Accounting student at Rutgers focused on audit, financial analysis, and budgeting.</p>
+<p>I am an accounting student at Rutgers focused on audit, financial analysis, budgeting, and data-driven decision-making.</p>
 </section>
 
 <section id="experience">
 <h2>Experience</h2>
-<p>Accounting Assistant – Processed 40+ invoices daily and maintained records.</p>
+<p><b>Accounting Assistant / Bookkeeper</b><br>Processed 40+ invoices daily and maintained accurate financial records.</p>
 </section>
 
 <section id="app">
 <h2>Budget Risk Dashboard</h2>
+<p>Enter your monthly income and expenses to calculate your financial risk level.</p>
 
 <div class="card">
-<label>Income</label>
-<input type="number" id="income">
+<label>Monthly Income</label>
+<input type="number" id="income" placeholder="Example: 2000">
 
-<label>Expenses</label>
-<input type="number" id="expenses">
+<label>Rent / Housing</label>
+<input type="number" id="rent" placeholder="Example: 800">
 
-<button type="button" onclick="calc()">Analyze</button>
+<label>Food</label>
+<input type="number" id="food" placeholder="Example: 300">
 
-<div id="result"></div>
-<div id="risk"></div>
+<label>Transportation</label>
+<input type="number" id="transport" placeholder="Example: 150">
+
+<label>Other Expenses</label>
+<input type="number" id="other" placeholder="Example: 200">
+
+<button onclick="analyzeBudget()">Analyze Budget</button>
+
+<div id="output"></div>
 </div>
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
 <p>Email: muneem.islam.mi@gmail.com</p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/muneem-islam">www.linkedin.com/in/muneem-islam</a></p>
 </section>
 
 <script>
-function calc(){
-let income = Number(document.getElementById("income").value);
-let expenses = Number(document.getElementById("expenses").value);
+function analyzeBudget() {
+    const income = Number(document.getElementById("income").value);
+    const rent = Number(document.getElementById("rent").value) || 0;
+    const food = Number(document.getElementById("food").value) || 0;
+    const transport = Number(document.getElementById("transport").value) || 0;
+    const other = Number(document.getElementById("other").value) || 0;
 
-if(income <= 0){
-document.getElementById("result").innerHTML = "Enter valid income.";
-return;
-}
+    const output = document.getElementById("output");
 
-let remaining = income - expenses;
-let percent = (expenses/income)*100;
+    if (!income || income <= 0) {
+        output.innerHTML = '<div class="result high"><b>Please enter a valid monthly income.</b></div>';
+        return;
+    }
 
-document.getElementById("result").innerHTML =
-"Remaining: $" + remaining.toFixed(2) + "<br>Spending: " + percent.toFixed(1) + "%";
+    const totalExpenses = rent + food + transport + other;
+    const remaining = income - totalExpenses;
+    const spendingRate = (totalExpenses / income) * 100;
+    const savingsRate = (remaining / income) * 100;
 
-let riskBox = document.getElementById("risk");
+    let risk = "";
+    let riskClass = "";
 
-if(percent > 90){
-riskBox.innerHTML="High Risk";
-riskBox.className="risk high";
-}
-else if(percent > 70){
-riskBox.innerHTML="Moderate Risk";
-riskBox.className="risk moderate";
-}
-else{
-riskBox.innerHTML="Low Risk";
-riskBox.className="risk low";
-}
+    if (spendingRate >= 90 || remaining < 0) {
+        risk = "High Risk";
+        riskClass = "high";
+    } else if (spendingRate >= 70) {
+        risk = "Moderate Risk";
+        riskClass = "medium";
+    } else {
+        risk = "Low Risk";
+        riskClass = "low";
+    }
+
+    output.innerHTML = `
+        <div class="result ${riskClass}">
+            <h3>${risk}</h3>
+            <p><b>Total Expenses:</b> $${totalExpenses.toFixed(2)}</p>
+            <p><b>Remaining Balance:</b> $${remaining.toFixed(2)}</p>
+            <p><b>Spending Rate:</b> ${spendingRate.toFixed(1)}%</p>
+            <p><b>Savings Rate:</b> ${savingsRate.toFixed(1)}%</p>
+            <p><b>Summary:</b> This dashboard reviews your spending pattern and assigns a financial risk level based on how much of your income is being used.</p>
+        </div>
+    `;
 }
 </script>
 
