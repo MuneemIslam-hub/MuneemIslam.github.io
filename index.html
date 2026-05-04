@@ -8,14 +8,51 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Arial;background:#f5f7fb;}
-nav{position:fixed;width:100%;background:#0a1f44;padding:15px;text-align:center;}
-nav a{color:white;margin:10px;text-decoration:none;font-weight:bold;}
-section{padding:100px 20px;max-width:900px;margin:auto;}
-.hero{text-align:center;padding-top:120px;}
-.profile-pic{width:200px;border-radius:50%;border:5px solid #0a1f44;}
-.btn{display:inline-block;padding:12px 20px;background:#0a1f44;color:white;border-radius:25px;margin:5px;text-decoration:none;}
-.card{background:white;padding:20px;border-radius:15px;margin-top:20px;}
-.risk{padding:20px;border-radius:10px;margin-top:10px;font-weight:bold;text-align:center;}
+
+nav{
+position:fixed;width:100%;background:#0a1f44;
+padding:15px;text-align:center;
+}
+
+nav a{
+color:white;margin:10px;text-decoration:none;font-weight:bold;
+}
+
+section{
+padding:100px 20px;max-width:900px;margin:auto;
+}
+
+.hero{
+text-align:center;padding-top:120px;
+}
+
+.profile-pic{
+width:200px;border-radius:50%;border:5px solid #0a1f44;
+}
+
+.btn{
+display:inline-block;padding:12px 20px;
+background:#0a1f44;color:white;border-radius:25px;
+margin:5px;text-decoration:none;
+}
+
+.card{
+background:white;padding:20px;border-radius:15px;margin-top:20px;
+}
+
+input{
+width:100%;padding:10px;margin-top:5px;border-radius:8px;border:1px solid #ccc;
+}
+
+button{
+margin-top:15px;padding:12px;width:100%;
+background:#0a1f44;color:white;border:none;border-radius:20px;
+}
+
+.risk{
+padding:15px;border-radius:10px;margin-top:10px;font-weight:bold;text-align:center;
+}
+
 .low{background:#d8f3dc;}
 .moderate{background:#fff3cd;}
 .high{background:#f8d7da;}
@@ -49,18 +86,17 @@ section{padding:100px 20px;max-width:900px;margin:auto;}
 <p>Accounting Assistant – Processed 40+ invoices daily and maintained records.</p>
 </section>
 
-<!-- APP SECTION -->
 <section id="app">
 <h2>Budget Risk Dashboard</h2>
 
 <div class="card">
 <label>Income</label>
-<input type="number" id="income"><br><br>
+<input type="number" id="income">
 
 <label>Expenses</label>
-<input type="number" id="expenses"><br><br>
+<input type="number" id="expenses">
 
-<button onclick="calc()">Analyze</button>
+<button type="button" onclick="calc()">Analyze</button>
 
 <div id="result"></div>
 <div id="risk"></div>
@@ -74,14 +110,19 @@ section{padding:100px 20px;max-width:900px;margin:auto;}
 
 <script>
 function calc(){
-let income = document.getElementById("income").value;
-let expenses = document.getElementById("expenses").value;
+let income = Number(document.getElementById("income").value);
+let expenses = Number(document.getElementById("expenses").value);
+
+if(income <= 0){
+document.getElementById("result").innerHTML = "Enter valid income.";
+return;
+}
 
 let remaining = income - expenses;
 let percent = (expenses/income)*100;
 
 document.getElementById("result").innerHTML =
-"Remaining: $" + remaining + "<br>Spending: " + percent.toFixed(1) + "%";
+"Remaining: $" + remaining.toFixed(2) + "<br>Spending: " + percent.toFixed(1) + "%";
 
 let riskBox = document.getElementById("risk");
 
